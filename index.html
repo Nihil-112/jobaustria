@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Nimmy</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background: linear-gradient(to bottom right, #ffccff, #ff99cc);
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            margin-top: 10%;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            animation: slideIn 2s ease-in-out;
+        }
+
+        h1 {
+            color: #420b26;
+            font-size: 48px;
+            animation: glow 1.5s infinite alternate;
+        }
+
+        p {
+            font-size: 24px;
+            color: #660033;
+            margin: 10px 0;
+            animation: fadeIn 4s ease-in-out;
+        }
+
+        .balloons {
+            font-size: 60px;
+            animation: float 3s infinite alternate;
+        }
+
+        img {
+            width: 80%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        /* Popup Video Styling */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            z-index: 1000;
+        }
+
+        .popup video {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 10px;
+        }
+
+        .close-btn {
+            margin-top: 10px;
+            background: #ff3399;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+        .close-btn:hover {
+            background: #cc0066;
+        }
+
+        /* Overlay Background */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        .hand-down {
+    font-size: 24px;
+    color: #660033;
+    font-weight: bold;
+    margin: 15px 0;
+    animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(10px);
+    }
+}
+
+.click-text {
+    color: #ff3399;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>🎉 Happy Birthday, Nimmy! 🎂</h1>
+        <p>May your day be filled with joy, laughter, and love! 💖</p>
+        <p>Wishing you all the happiness in the world! 🌟</p>
+        <div class="balloons">
+            🎈🎈🎈🎈🎈
+        </div>
+        <!-- Hand Gesture -->
+        <div class="hand-down">
+            👇 <span class="click-text">Click Here for a Surprise!</span> 👇
+        </div>
+        <img id="Image" onclick="turnOnOff()" src="baloon.jpg" alt="Balloon Image">
+
+        <br><br>
+        <button onclick="showVideo()" class="close-btn">Click for a Surprise 🎥</button>
+    </div>
+
+    <!-- Overlay and Popup (Initially Hidden) -->
+    <div class="overlay" id="overlay"></div>
+    <div class="popup" id="videoPopup">
+        <video id="birthdayVideo" controls>
+            <source src="birthday.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <br>
+        <button class="close-btn" onclick="hideVideo()">Close</button>
+    </div>
+
+    <script>
+        function turnOnOff() {
+            let image = document.getElementById('Image');
+            if (image.src.includes("baloon.jpg")) {
+                image.src = "nimmy.jpg";
+            } else {
+                image.src = "baloon.jpg";
+            }
+        }
+
+        function showVideo() {
+            document.getElementById('videoPopup').style.display = 'block';
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('birthdayVideo').play();
+        }
+
+        function hideVideo() {
+            document.getElementById('videoPopup').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('birthdayVideo').pause();
+        }
+    </script>
+
+</body>
+
+</html>
